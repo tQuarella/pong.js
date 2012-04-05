@@ -41,7 +41,13 @@
     };
 
     MoveableObject.prototype.reflect = function() {
-      this.angle -= 180;
+      if (this.angle > 0 && this.angle < 90 || this.angle > 180 && this.angle < 270) {
+        this.angle += 90;
+      } else if (this.angle > 90 && this.angle < 180 || this.angle > 270 && this.angle < 360) {
+        this.angle -= 90;
+      } else if (this.angle === 0 || this.angle === 180) {
+        this.angle += 180;
+      }
       return this.cleanAngle();
     };
 

@@ -23,10 +23,18 @@ class @MoveableObject extends GeometricObject
     @x = @bounds.centerX() - (@width/2)
     @y = @bounds.centerY() - (@height/2)
 
+
+  #deflect and reflect currently assume the object is in a box
   reflect: ->
-    @angle -= 180
+    if @angle > 0 && @angle < 90 || @angle > 180 && @angle < 270
+      @angle += 90
+    else if @angle > 90 && @angle < 180 || @angle > 270 && @angle < 360
+      @angle -= 90
+    else if @angle == 0 || @angle == 180
+      @angle += 180
     @cleanAngle()
 
+  # we're not handling the 90 or 270 cases because they should never happen in pong
   deflect: ->
     if @angle < 90 || (@angle > 180 && @angle < 270)
       @angle -= 90

@@ -75,3 +75,57 @@ describe 'MoveableObject: ', ->
     p.moveToCenter()
     expect(p.x).toEqual 8
     expect(p.y).toEqual 3
+
+  it "reflects up-right to up-left", ->
+    p = new MoveableObject()
+    p.angle = 45
+    p.reflect()
+    expect(p.angle).toEqual 135
+
+  it "reflects up-left to up-right", ->
+    p = new MoveableObject()
+    p.angle = 135
+    p.reflect()
+    expect(p.angle).toEqual 45
+
+  it "reflects down-right to down-left", ->
+    p = new MoveableObject()
+    p.angle = 315
+    p.reflect()
+    expect(p.angle).toEqual 225
+
+  it "reflects down-left to down-right", ->
+    p = new MoveableObject()
+    p.angle = 225
+    p.reflect()
+    expect(p.angle).toEqual 315
+ 
+  it "deflects up-right to down-right", ->
+    p = new MoveableObject()
+    p.angle = 45
+    p.deflect()
+    expect(p.angle).toEqual 315
+
+  it "deflects up-left to down-left", ->
+    p = new MoveableObject()
+    p.angle = 135
+    p.deflect()
+    expect(p.angle).toEqual 225
+
+  it "deflects down-left to up-left", ->
+    p = new MoveableObject()
+    p.angle = 135
+    p.deflect()
+    expect(p.angle).toEqual 225
+
+  it "deflects down-left to up-left", ->
+    p = new MoveableObject()
+    p.angle = 315
+    p.deflect()
+    expect(p.angle).toEqual 45
+
+  it "reflects shallow", ->
+    p = new MoveableObject()
+    p.angle = 1
+    p.reflect()
+    expect(p.angle).toEqual 179

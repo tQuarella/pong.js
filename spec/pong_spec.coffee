@@ -5,12 +5,6 @@ describe "Pong: ", ->
     expect(w.paddleRight).toBeDefined()
     expect(w.ball).toBeDefined()
 
-  it "starts the game", ->
-    w = new Pong
-    w.startGame()
-    expect(w.ball.angle).toBeGreaterThan -46
-    expect(w.ball.angle).toBeLessThan 46
-
   it "sets the game", ->
     w = new Pong
     spyOn(w.ball, "moveToCenter")
